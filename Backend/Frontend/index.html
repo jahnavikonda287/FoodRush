@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodRush - Online Food Delivery</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🍔 FoodRush</h1>
+        <p>Online Food Delivery</p>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <h2>Welcome to FoodRush</h2>
+            <p>Order your favourite food from your favourite restaurants.</p>
+        </section>
+
+        <section>
+    <h2>Restaurants</h2>
+
+    <button onclick="loadRestaurants()">
+        View Restaurants
+    </button>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="restaurantSearch"
+            placeholder="Search restaurant..."
+        >
+
+        <button onclick="searchRestaurants()">
+            Search
+        </button>
+    </div>
+
+    <div id="restaurantList"></div>
+</section>
+
+<section>
+    <h2>Food Menu</h2>
+
+    <button onclick="loadFoods()">
+        View Food
+    </button>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="foodSearch"
+            placeholder="Search food..."
+        >
+
+        <button onclick="searchFoods()">
+            Search
+        </button>
+    </div>
+
+    <div id="foodList"></div>
+</section>
+<section>
+    <h2>Order Details</h2>
+
+    <div class="search-box">
+        <input
+            type="number"
+            id="orderId"
+            placeholder="Enter Order ID"
+        >
+
+        <button onclick="viewOrder()">
+            View Order
+        </button>
+    </div>
+
+    <div id="orderDetails"></div>
+
+    <div id="orderItems"></div>
+
+    <div id="paymentDetails"></div>
+    <div id="deliveryDetails"></div>
+</section>
+<section>
+    <h2>Customer Orders</h2>
+
+    <div class="search-box">
+        <input
+            type="number"
+            id="customerId"
+            placeholder="Enter Customer ID"
+        >
+
+        <button onclick="viewCustomerOrders()">
+            View Orders
+        </button>
+    </div>
+
+    <div id="customerOrders"></div>
+</section>
+<section>
+    <h2>Customer Reviews</h2>
+
+    <div class="search-box">
+        <input
+            type="number"
+            id="reviewCustomerId"
+            placeholder="Enter Customer ID"
+        >
+
+        <button onclick="viewCustomerReviews()">
+            View Reviews
+        </button>
+    </div>
+
+    <div id="customerReviews"></div>
+</section>
+<section>
+    <h2>Restaurant Reviews</h2>
+
+    <div class="search-box">
+        <input
+            type="number"
+            id="reviewRestaurantId"
+            placeholder="Enter Restaurant ID"
+        >
+
+        <button onclick="viewRestaurantReviews()">
+            View Reviews
+        </button>
+    </div>
+
+    <div id="restaurantReviews"></div>
+</section>
+<section>
+    <h2>Place New Order</h2>
+
+    <div class="search-box">
+
+        <input
+            type="number"
+            id="newOrderCustomerId"
+            placeholder="Customer ID"
+        >
+
+        <input
+            type="number"
+            id="newOrderRestaurantId"
+            placeholder="Restaurant ID"
+        >
+
+        <input
+            type="number"
+            id="newOrderAmount"
+            placeholder="Total Amount"
+        >
+
+        <input
+            type="text"
+            id="newOrderAddress"
+            placeholder="Delivery Address"
+        >
+
+        <button onclick="placeNewOrder()">
+            Place Order
+        </button>
+
+    </div>
+
+    <div id="newOrderResult"></div>
+</section>
+<section>
+    <h2>Update Order Status</h2>
+
+    <div class="search-box">
+
+        <input
+            type="number"
+            id="updateOrderId"
+            placeholder="Enter Order ID"
+        >
+
+        <select id="updateOrderStatus">
+            <option value="PLACED">PLACED</option>
+            <option value="PREPARING">PREPARING</option>
+            <option value="OUT_FOR_DELIVERY">OUT FOR DELIVERY</option>
+            <option value="DELIVERED">DELIVERED</option>
+            <option value="CANCELLED">CANCELLED</option>
+        </select>
+
+        <button onclick="updateOrderStatus()">
+            Update Status
+        </button>
+
+    </div>
+
+    <div id="updateOrderResult"></div>
+</section>
+<section>
+    <h2>Update Food</h2>
+
+    <div class="search-box">
+
+        <input
+            type="number"
+            id="updateFoodId"
+            placeholder="Enter Food ID"
+        >
+
+        <input
+            type="number"
+            id="updateFoodPrice"
+            placeholder="Enter New Price"
+        >
+
+        <select id="updateFoodAvailability">
+            <option value="true">Available</option>
+            <option value="false">Not Available</option>
+        </select>
+
+        <button onclick="updateFood()">
+            Update Food
+        </button>
+
+    </div>
+
+    <div id="updateFoodResult"></div>
+</section>
+<section>
+    <h2>Update Payment Status</h2>
+
+    <div class="search-box">
+
+        <input
+            type="number"
+            id="updatePaymentId"
+            placeholder="Enter Payment ID"
+        >
+
+        <select id="updatePaymentStatus">
+            <option value="PENDING">PENDING</option>
+            <option value="SUCCESS">SUCCESS</option>
+            <option value="FAILED">FAILED</option>
+        </select>
+
+        <button onclick="updatePaymentStatus()">
+            Update Payment
+        </button>
+
+    </div>
+
+    <div id="updatePaymentResult"></div>
+</section>
+<section>
+    <h2>Update Delivery Status</h2>
+
+    <div class="search-box">
+
+        <input
+            type="number"
+            id="updateDeliveryId"
+            placeholder="Enter Delivery ID"
+        >
+
+        <select id="updateDeliveryStatus">
+            <option value="ASSIGNED">ASSIGNED</option>
+            <option value="OUT_FOR_DELIVERY">OUT FOR DELIVERY</option>
+            <option value="DELIVERED">DELIVERED</option>
+        </select>
+
+        <button onclick="updateDeliveryStatus()">
+            Update Delivery
+        </button>
+
+    </div>
+
+    <div id="updateDeliveryResult"></div>
+</section>
+<section>
+    <h2>Add Review</h2>
+
+    <div class="search-box">
+
+        <input
+            type="number"
+            id="newReviewCustomerId"
+            placeholder="Customer ID"
+        >
+
+        <input
+            type="number"
+            id="newReviewRestaurantId"
+            placeholder="Restaurant ID"
+        >
+
+        <input
+            type="number"
+            id="newReviewOrderId"
+            placeholder="Order ID"
+        >
+
+        <input
+            type="number"
+            id="newReviewRating"
+            placeholder="Rating (1-5)"
+            min="1"
+            max="5"
+        >
+
+        <input
+            type="text"
+            id="newReviewComments"
+            placeholder="Write your review"
+        >
+
+        <button onclick="addReview()">
+            Add Review
+        </button>
+
+    </div>
+
+    <div id="addReviewResult"></div>
+</section>
+<section>
+    <h2>Delete Review</h2>
+
+    <div class="search-box">
+
+        <input
+            type="number"
+            id="deleteReviewId"
+            placeholder="Enter Review ID"
+        >
+
+        <button onclick="deleteReview()">
+            Delete Review
+        </button>
+
+    </div>
+
+    <div id="deleteReviewResult"></div>
+</section>
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

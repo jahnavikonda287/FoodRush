@@ -1,5 +1,4 @@
-const API_URL = "http://localhost:5000";
-
+const API_URL = "";
 // Load restaurants
 function loadRestaurants() {
     fetch(`${API_URL}/restaurants`)
